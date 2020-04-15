@@ -22,7 +22,7 @@ app.use(cors());
 //start directory
 app.use(express.static('dist')); 
 
-pp.get('/', function (req, res) {
+app.get('/', function (req, res) {
   res.sendFile('dist/index.html') 
 })
 
@@ -36,13 +36,18 @@ function listening() {
     console.log('server running');
     console.log(`running on localhost: ${port}`);
   }
+
+  const projectData = {};
+
+  // Store location
+app.post('/add', (req, res) => {
+  projectData.storeLocatiot = req.body.storeLocatio
+  res.send(projectData);
+  
+});
   
   app.get('/test', function (req, res) {
     res.send(mockAPIResponse);
   });
   
-  
-  
-    app.get('/test', function (req, res) {
-    res.send(mockAPIResponse);
-  });
+

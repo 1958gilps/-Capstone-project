@@ -1,4 +1,0 @@
-/*
-Read
-the date entered on the web page
-*/
