@@ -1,0 +1,3 @@
+/*
+Read the location entered on the web page
+*/
