@@ -9,11 +9,9 @@ import {readDate} from './js/getDate'
 import './styles/base.scss'
 import './styles/box.scss'
 import './styles/container.scss'
-
 import './styles/footer.scss'
 import './styles/form.scss'
 import './styles/header.scss'
-
 import './styles/resets.scss'
 
 export {readLocation, readDate};
