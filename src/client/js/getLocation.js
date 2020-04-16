@@ -16,11 +16,10 @@ function readLocation(event) {
           //  alert (alert('Please enter between 1 and 50 characters!');
       //  }
 }
-
-
     //let enterlenDate = enterDate.length;
     //console.log(enterLength);
 
     //Client.checkForLocation(enterLocation);
 
 export { readLocation };    
+
