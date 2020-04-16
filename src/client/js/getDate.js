@@ -1,6 +1,5 @@
 /*
-Read
-the date entered on the web page
+Read the date entered on the web page
 */
 function readDate(event) {
     event.preventDefault();
