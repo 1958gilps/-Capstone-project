@@ -3,6 +3,10 @@
     <head>
         <meta charset="utf-8">
         <title>Capstone Project</title>
+        <meta
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+        name="viewport"
+      />
     </head>
 
     <body>
@@ -11,11 +15,38 @@
             <div class="">navigation</div>
         </header>
         <main>
-           
+            <div class = "container">
+                <div id = "one" class = "box">
+                    <section>
+                        <h1>Travel Planner:</h1>
+                        <div id="results"></div>
+                    </section>
+                </div>
+                <div id = "two" class = "box">
+                    <section>
+                        <form class="">
+                            <label for="location">My Trip Destination: </label>
+                            <input
+                             type="text"
+                             id="location"
+                             placeholder="Enter Destination Location"
+                             />
+                             <label for="date">Enter Trip Date: </label>
+                             <input
+                             type = "date"
+                             id = "date"
+                             /> 
+                             <button type="submit"
+                             onclick="Client.readLocation(event);Client.readDate(event)">
+                             Submit
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </div>
         </main>
-
         <footer>
             <p>This is a footer</p>
         </footer>
-
     </body>
+</html>
