@@ -1,1 +1,15 @@
+body {
+    background-color: rgb(235, 235, 150);
+    display:grid;
+    flex-direction: row-reverse;
+    min-height: 20vh;
+}
 
+main {
+    grid: 5;
+}
+
+section {
+    max-width: 400px;
+    margin: 50px auto;
+}

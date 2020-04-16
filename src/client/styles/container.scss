@@ -1,0 +1,10 @@
+.container{
+    width: 100vw;
+    height: 200vh;
+    margin: auto;
+    grid-auto-rows:minmax(100px, 135px);
+;           grid-template-rows: repeat(2, 1fr);
+    grid-gap: 20px;
+    border: 10px solid rgb(247, 182, 96);
+    justify-content: center;   
+}
