@@ -3,15 +3,23 @@
     align-items: center;
     justify-content: center;
     padding: 15px;
-    
 }
 #one {
   grid-area: top;
-  height: 150px;
+  height: 100px;
   font-size: xx-large;
   background-color: rgb(235, 235, 150);
 }
 #two {
+  grid-area: middle-right;
+  background-color: rgb(235, 235, 150);
+}
+#three {
+  grid-area: middle-left;
+  background-color: rgb(235, 235, 150);
+}
+#four {
   grid-area: bottom;
+  height: 200px;
   background-color: rgb(235, 235, 150);
 }

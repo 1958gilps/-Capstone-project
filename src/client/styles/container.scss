@@ -1,14 +1,15 @@
 .container {
     display: grid;
-    width: 80vw;
-    height: 150vh;
+    width: auto;
+    height: 800px;
+
     margin: auto;
-    grid-template-columns: (20vw, 20vw, 20vw, 20vw);
-    grid-auto-rows:minmax(100px, 135px);
+    grid-auto-rows:minmax(35px, 150px);
     grid-template-rows: repeat(2, 1fr);
     grid-gap: 20px;
     grid-template-areas:
     "top"
+    "middle-right" "middle-left"
     "bottom";
     border: 10px solid rgb(247, 182, 96);
     justify-content: center;
