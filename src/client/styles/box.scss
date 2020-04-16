@@ -1,20 +1,17 @@
-.box{
+.box {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 15px;
     
 }
-#one{
+#one {
   grid-area: top;
   height: 150px;
   font-size: xx-large;
   background-color: rgb(235, 235, 150);
-
 }
-#two{
+#two {
   grid-area: bottom;
   background-color: rgb(235, 235, 150);
-
-  
 }
