@@ -5,7 +5,7 @@
     padding: 15px;
 }
 h1 {
-  color: chocolate;;
+  color: chocolate;
 }
 #one {
   grid-area: tp;
@@ -25,6 +25,7 @@ h1 {
   grid-area: bt;
   height: 200px;
   background-color: rgb(235, 235, 150);
+  border-color: chocolate;
 }
 #five {
   grid-area: bs;

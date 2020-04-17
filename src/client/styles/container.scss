@@ -1,7 +1,7 @@
 .container {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: 250px 600px;
+    grid-template-rows: 200px 200px 200px 50px;
     grid-template-areas:
     "tp tp tp tp tp tp tp"
     "ml ml ml ml mr mr mr"
