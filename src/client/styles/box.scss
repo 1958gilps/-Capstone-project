@@ -5,21 +5,24 @@
     padding: 15px;
 }
 #one {
-  grid-area: top;
+  grid-area: tp;
   height: 100px;
   font-size: xx-large;
   background-color: rgb(235, 235, 150);
 }
 #two {
-  grid-area: middle-right;
+  grid-area: ml;
   background-color: rgb(235, 235, 150);
 }
 #three {
-  grid-area: middle-left;
+  grid-area: mr;
   background-color: rgb(235, 235, 150);
 }
 #four {
-  grid-area: bottom;
+  grid-area: bt;
   height: 200px;
   background-color: rgb(235, 235, 150);
+}
+#five {
+  grid-area: bs;
 }

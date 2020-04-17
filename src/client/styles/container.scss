@@ -1,16 +1,14 @@
 .container {
     display: grid;
-    width: auto;
-    height: 800px;
-
-    margin: auto;
-    grid-auto-rows:minmax(35px, 150px);
-    grid-template-rows: repeat(2, 1fr);
-    grid-gap: 20px;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 250px 600px;
     grid-template-areas:
-    "top"
-    "middle-right" "middle-left"
-    "bottom";
+    "tp tp tp tp tp tp tp"
+    "ml ml ml ml mr mr mr"
+    "bt bt bt bt bt bt bt"
+    "bs bs bs bs bs bs bs";
+    margin: auto;
+    grid-gap: 20px;
     border: 10px solid rgb(247, 182, 96);
     justify-content: center;
 }
