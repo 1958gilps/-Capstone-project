@@ -1,6 +1,6 @@
-import {readLocation} from './js/getLocation'
+//import {readLocation} from './js/getLocation'
 
-import {readDate} from './js/getDate'
+import {performAction} from './js/getWeather'
 //import dotenv from 'dotenv'
 //dotenv.config()
 
@@ -12,6 +12,6 @@ import './styles/form.scss'
 import './styles/header.scss'
 import './styles/resets.scss'
 
-export {readLocation, readDate};
+export {performAction};
 
 

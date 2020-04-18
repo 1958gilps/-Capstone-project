@@ -1,6 +1,7 @@
 /*
 Read the location entered on the web page
 */
+/*
 function readLocation(event) {
     event.preventDefault();
 
@@ -22,4 +23,4 @@ function readLocation(event) {
     //Client.checkForLocation(enterLocation);
 
 export { readLocation };    
-
+*/

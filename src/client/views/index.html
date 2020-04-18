@@ -18,7 +18,7 @@
             <div class = "container">
                 <div id = "one" class = "box">
                     <section>
-                        <h1>TRAVEL PLANNER</h1>
+                        <h1>AMERICA the BEAUTIFUL TRAVEL PLANNER</h1>
                         </section>
                 </div>
                 <div id="two" class = "box">
@@ -31,25 +31,22 @@
 
                     </section>
                 </div> 
-                <!-- id # 4 is for the date and location UI-->
+                <!-- id # 4 is for the date, city and state entered on the UI-->
                 <div id = "four" class = "box">
                     <section>
                         <form class="">
-                            <label for="location">My Trip Destination: </label>
-                            <input
-                             type="text"
-                             id="location"
-                             placeholder="Enter Destination Location"
-                             />
-                             <label for="date">Enter Trip Date: </label>
-                             <input
-                             type = "date"
-                             id = "date"
-                             /> 
-                             <button type="submit"
-                             onclick="Client.readLocation(event);Client.readDate(event)">
-                             Submit
-                            </button>
+                            <div class ="holder city">
+                                <label for="city">Enter City here</label>
+                                <input type="text" id="city" placeholder="Enter city here">
+                            </div>
+                            <div class ="holder state">
+                                <label for="state">Enter the State here</label>
+                                <input type="text" id="state" placeholder="Enter state here">
+                            </div> 
+                            <div class ="date">
+                                <label for="date">Enter Trip Date: </label>
+                                <input type="date" id= "date" >
+                            <button id="submit" type = "submit"> Submit </button>
                         </form>
                     </section>
                 </div>
