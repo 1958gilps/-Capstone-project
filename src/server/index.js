@@ -24,7 +24,7 @@ app.use(cors());
 app.use(express.static('dist'));
 
 app.get('/', function (request, response) {
-  response.sendFile('dist/index.html') 
+  response.sendFile('dist/index.html')
 })
 
 // designates what port the app will listen to for incoming requests

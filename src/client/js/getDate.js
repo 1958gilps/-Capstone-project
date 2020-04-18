@@ -1,6 +1,7 @@
 /*
 Read the date entered on the web page
 */
+/*
 document.getElementById('submit').addEventListener('click', performAction); // jumps to performAction
 
 function performAction(event) {
@@ -16,7 +17,7 @@ function performAction(event) {
 }
 
 export { enterDate, enterLocation };   
-
+*/
 /*
 function readDate(event) {
     event.preventDefault();
