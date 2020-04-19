@@ -1,5 +1,18 @@
-/* Global Variables */
+/*
+Create an account with Weatherbit.
+Integrate the Weatherbit API similarly to how you integrated the geoname api. 
+What information needs to get adjusted for you to pull in the future weather? Getting a CORS error? 
+Check out this article for some options. 
+NOTE: If you see that your app is working, but it takes several clicks to get all of the data, 
+think of why this could be. This is possibly the most challenging part of the project. 
+There is a major hint located in the Before you Begin section. If you’re unable to figure it out, 
+and your app still works with a few clicks, continue working on it, it may come to you later, 
+or you’ll get guidance from your reviewer when you submit the app.
 
+    How does the Weatherbit API distinguish from the current forecast and future forecasts? 
+    Does the API change in any way?
+    How will we include the date? What format does it need to be in? How can we change it to the appropriate format?
+ */
 /*
 https://www.weatherbit.io/api
 
@@ -11,7 +24,7 @@ and highly localized weather forecasts for any point on the globe using the worl
 
 Weatherbit user account
 usename : gilps1958
-Password: capStone
+Password: CapStone
 
 Key: fc643df8afa84232810d91605c97db23
 Name:  	Master API Key
@@ -19,26 +32,24 @@ Name:  	Master API Key
 
 const key = '&key=fc643df8afa84232810d91605c97db23';
 const baseURL = 'https://api.weatherbit.io/v2.0/forecast/daily?city=';
-//Event listener 
-document.getElementById('submit').addEventListener('click', performAction); // jumps to performAction
 
-
-function performAction (e) {
+export function apiWeather (e) {
     const inputCity = document.getElementById('city').value; // reads the city entered
     const inputState = document.getElementById('state').value; // reads the state entered
-    const inputDate = document.getElementById('date').value // reads the date entered
+    //const inputDate = document.getElementById('date').value // reads the date entered
     console.log("city",inputCity);
     console.log("state", inputState);
-    console.log("date", inputDate);
+    //console.log("date", inputDate);
     getWeather(`${baseURL}${inputCity},${ inputState}${key}`) // jumps to getWeather
 
     .then(function(apiData) { //DATA as JSON
-        console.log("where is waldo");
-        postData('/saveData',(apiData)) // jumps to postData
-    })
-    .then(
-        console.log("Almost")
+        console.log(apiData);
+      postData('../saveData',(apiData)) // jumps to postData
+
+      .then(
+        console.log("end")
         )
+    });
 };
 
 //GET async
@@ -58,9 +69,9 @@ const getWeather = async (url) =>{
     };
 };
 
-//POST weather data to endpoint const weatherData = [];
+//POST async
 const postData = async function ( url='',data = {}) { 
-    const response = await fetch (url, {  
+    const res = await fetch (url, {  
         method:'POST',
         credentials:'same-origin',
         headers: {
@@ -70,35 +81,11 @@ const postData = async function ( url='',data = {}) {
     });
 
     try {
-        const newData = response.json();
+        const newData = res.json();
 
         console.log(newData);
         return newData;
     }catch (error){
         console.log('There is an error in the POST update...'+ error);
     };
-};
-
-//update UI
-const updateUI = async () => {
-    const request = await fetch ('/all') // request = Response {type: "basic", url: "http://localhost:3000/all/", redirected: true, status: 200, ok: true, …}
-    try{
-        const serverData = await request.json()
-        console.log(serverData);
-
-        for (var i=0; i<serverData.length; i++) {
-            
-            document.getElementById('date').innerHTML = serverData[i].date;
-            document.getElementById('temp').innerHTML = serverData[i].temp+' °Fahrenheit';
-            document.getElementById('zip').innerHTML = serverData[i].zip;
-            document.getElementById('city').innerHTML = serverData[i].city;
-            document.getElementById('input').innerHTML = serverData[i].input;
-
-        }
-
-    }catch (error){
-        console.log('There is an error in the UI update...'+ error);
-    };
-};
-
-export {performAction};
+}
