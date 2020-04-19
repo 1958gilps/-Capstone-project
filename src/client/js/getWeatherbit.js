@@ -1,19 +1,4 @@
 /*
-Create an account with Weatherbit.
-Integrate the Weatherbit API similarly to how you integrated the geoname api. 
-What information needs to get adjusted for you to pull in the future weather? Getting a CORS error? 
-Check out this article for some options. 
-NOTE: If you see that your app is working, but it takes several clicks to get all of the data, 
-think of why this could be. This is possibly the most challenging part of the project. 
-There is a major hint located in the Before you Begin section. If you’re unable to figure it out, 
-and your app still works with a few clicks, continue working on it, it may come to you later, 
-or you’ll get guidance from your reviewer when you submit the app.
-
-    How does the Weatherbit API distinguish from the current forecast and future forecasts? 
-    Does the API change in any way?
-    How will we include the date? What format does it need to be in? How can we change it to the appropriate format?
- */
-/*
 https://www.weatherbit.io/api
 
 Sign up for the Weatherbit API!
@@ -24,10 +9,30 @@ and highly localized weather forecasts for any point on the globe using the worl
 
 Weatherbit user account
 usename : gilps1958
-Password: CapStone
+Password: capStone
 
 Key: fc643df8afa84232810d91605c97db23
 Name:  	Master API Key
+Your API Key is still provisioning. Provisioning can take up to 30 minutes
+
+Your Weatherbit API Key has been provisioned!
+Your API Key is fc643df8afa84232810d91605c97db23
+
+To upgrade your API key, or manage your account simply login to the account dashboard using your username: gilps1958
+Thank your for using Weatherbit! Please contact us at support@weatherbit.io if you have any issues! 
+We're here to help!
+
+Plan: Free
+500 calls/day
+500 historical calls/day (trial)
+1 month historical
+16 day forecasts
+48 hour forecasts (trial)
+Air Quality / Energy API (trial)
+Non-Commercial use only
+95.0% Uptime
+Data update delay: 1 hour
+Price: Free 
 */
 
 const key = '&key=fc643df8afa84232810d91605c97db23';
@@ -44,7 +49,7 @@ export function apiWeather (e) {
 
     .then(function(apiData) { //DATA as JSON
         console.log(apiData);
-      postData('../saveData',(apiData)) // jumps to postData
+      postData('../saveWeather',(apiData)) // jumps to postData
 
       .then(
         console.log("end")

@@ -1,14 +1,4 @@
  /*
-Create an account with Geonames.
-Replace the openweather api with geonames api. You already have one working api. 
-What information needs to get adjusted so that instead of entering a zip code, 
-you enter a city? We want to get the latitude, longitude, country, instead of getting the temperature, feeling, and date.
-
-    The weather data array was named differently, what do we need to change the name to?
-    The weather data only had 1 object in the array, the geoname api outputs multiple objects. 
-    How do we call the first object?
-*/
-/*
 https://www.geonames.org/
 
 The GeoNames geographical database covers all countries and contains over eleven million placenames 
@@ -17,7 +7,7 @@ that are available for download free of charge
 geonames.org.
 GeoNames user account
 usename : gilps1958
-Password: CapStone
+Password: capStone
 
 Hello gilps1958
 
@@ -36,7 +26,6 @@ GeoNames Mailinglist : http://groups.google.com/group/geonames
 
 Your GeoNames team
 */
-
 // example string - 'http://api.geonames.org/geoCodeAddressJSON?q=Museumplein+6+amsterdam&username=demo'
 
 const example = 'http://api.geonames.org/addressJSON?lat=52.358&lng=4.881&username=gilps1958'

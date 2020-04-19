@@ -52,12 +52,12 @@ let locationData = [];
 });
 
  //GET data from weatherData = [];
-app.get('/all', function(request, response) {
+app.get('/weather', function(request, response) {
   request.send(weatherData)
 });
 
  //GET location from locationData = [];
- app.get('/all', function(request, response) {
+ app.get('/location', function(request, response) {
   request.send(locationData)
 });
 
@@ -68,7 +68,7 @@ app.post('/saveDate', function (request, response) {
   })
 
 //POST data to weatherData = [];
-app.post('/saveData', function (request, response) {
+app.post('/saveWeather', function (request, response) {
   console.log(request.body)
     weatherData.push(request.body)
   })
@@ -78,7 +78,6 @@ app.post('/saveLocation', function (request, response) {
   console.log(request.body)
     locationData.push(request.body)
   })
-
 
 // Test if server is working
 app.get('/test', function (request, response) {
