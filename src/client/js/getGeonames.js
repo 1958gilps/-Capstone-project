@@ -39,17 +39,19 @@ Your GeoNames team
 
 // example string - 'http://api.geonames.org/geoCodeAddressJSON?q=Museumplein+6+amsterdam&username=demo'
 
-const userName = '&username=gilps1958'
-const baseURL = 'http://api.geonames.org/geoCodeAddressJSON?q=Museumplein+6+'
+const example = 'http://api.geonames.org/addressJSON?lat=52.358&lng=4.881&username=gilps1958'
+
+//const userName = '&username=gilps1958'
+//const baseURL = 'http://api.geonames.org/geoCodeAddressJSON?q=Museumplein+6+'
 
 export function apiLocation (e) {
     const inputCity = document.getElementById('city').value; // reads the city entered
     const inputState = document.getElementById('state').value; // reads the state entered
     //const inputDate = document.getElementById('date').value // reads the date entered
     console.log("city",inputCity);
-    console.log("state", inputState);
+    console.log("state",inputState);
     //console.log("date", inputDate);
-    getLocation(`${baseURL}${inputCity}${userName}`) // jumps to getWeather
+    getLocation(`${example}`) //
 
     .then(function(apiData) { //DATA as JSON
         console.log(apiData);
@@ -66,10 +68,10 @@ const getLocation = async (url) =>{
 
     console.log(url);
  
-    const response = await fetch (url);
+    const res = await fetch (url);
 
     try {
-        const apiData = response.json();
+        const apiData = res.json();
         console.log(apiData);
         return apiData;
 
@@ -97,4 +99,4 @@ const postData = async function ( url='',data = {}) {
     }catch (error){
         console.log('There is an error in the POST update...'+ error);
     };
-}
+};
