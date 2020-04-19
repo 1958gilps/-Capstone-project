@@ -16,6 +16,7 @@ Password: capStone
 Key: fc643df8afa84232810d91605c97db23
 Name:  	Master API Key
 */
+
 const key = '&key=fc643df8afa84232810d91605c97db23';
 const baseURL = 'https://api.weatherbit.io/v2.0/forecast/daily?city=';
 //Event listener 
@@ -32,13 +33,12 @@ function performAction (e) {
     getWeather(`${baseURL}${inputCity},${ inputState}${key}`) // jumps to getWeather
 
     .then(function(apiData) { //DATA as JSON
-        console.log(apiData);
-      postData('/saveData',(apiData)) // jumps to postData
-
+        console.log("where is waldo");
+        postData('/saveData',(apiData)) // jumps to postData
+    })
     .then(
-        updateUI()
+        console.log("Almost")
         )
-    });
 };
 
 //GET async
@@ -60,7 +60,7 @@ const getWeather = async (url) =>{
 
 //POST weather data to endpoint const weatherData = [];
 const postData = async function ( url='',data = {}) { 
-    const res = await fetch (url, {  
+    const response = await fetch (url, {  
         method:'POST',
         credentials:'same-origin',
         headers: {
@@ -70,7 +70,7 @@ const postData = async function ( url='',data = {}) {
     });
 
     try {
-        const newData = res.json();
+        const newData = response.json();
 
         console.log(newData);
         return newData;
@@ -101,4 +101,4 @@ const updateUI = async () => {
     };
 };
 
-export {performAction}
+export {performAction};

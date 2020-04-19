@@ -46,7 +46,7 @@ function listening() {
 
  //GET data from weatherData = [];
 app.get('/all', function(request, response) {
-  response.send(weatherData)
+  request.send(weatherData)
 });
 
 //POST data to weatherData = [];
