@@ -41,10 +41,8 @@ const baseURL = 'https://api.weatherbit.io/v2.0/forecast/daily?city=';
 export function apiWeather (e) {
     const inputCity = document.getElementById('city').value; // reads the city entered
     const inputState = document.getElementById('state').value; // reads the state entered
-    //const inputDate = document.getElementById('date').value // reads the date entered
     console.log("city",inputCity);
     console.log("state", inputState);
-    //console.log("date", inputDate);
     getWeather(`${baseURL}${inputCity},${ inputState}${key}`) // jumps to getWeather
 
     .then(function(apiData) { //DATA as JSON
