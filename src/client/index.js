@@ -5,7 +5,7 @@ document.getElementById('submit').addEventListener('click', apiLocation); //
 document.getElementById('submit').addEventListener('click', apiWeather); //
 
 import {apiDate} from './js/getDate'
-import {apiLocation} from './js/getGeonames'
+import {apiLocation} from './js/getGeonames' // almost working. Pulls data
 import {apiWeather} from './js/getWeatherbit'
 
 import './styles/base.scss'

@@ -65,7 +65,7 @@ const getLocation = async (url) =>{
         return apiData;
 
     } catch (error) {
-        console.log('There is an error in the GET update...'+ error);
+        console.log('There is an error in the location GET update...'+ error);
     };
 };
 
