@@ -44,10 +44,9 @@ export function apiLocation (e) {
 
     .then(function(apiData) { //DATA as JSON
         console.log(apiData);
-      postData('/saveLocation',(apiData)) // jumps to postData
-
-      .then(
-        console.log("end")
+        postData('/saveLocation',(apiData)) // jumps to postData
+    .then(
+        console.log("end apiLocation")
         )
     });
 };

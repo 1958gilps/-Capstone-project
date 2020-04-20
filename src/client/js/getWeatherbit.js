@@ -52,7 +52,7 @@ export function apiWeather (e) {
       postData('/saveWeather',(apiData)) // jumps to postData
 
       .then(
-        console.log("end")
+        console.log("end apiWeather")
         )
     });
 };
@@ -62,19 +62,20 @@ const getWeather = async (url) =>{
 
     console.log(url);
  
-    const res = await fetch (url);
+    const response = await fetch (url);
 
     try {
-        const apiData = res.json();
+        const apiData = response.json();
         console.log(apiData);
         return apiData;
 
     } catch (error) {
-        console.log('There is an error in the weather GET update...'+ error);
+        console.log('There is an error in the GET update...'+ error);
     };
 };
 
-//POST async
+
+///POST async
 const postData = async function ( url='',data = {}) { 
     const res = await fetch (url, {  
         method:'POST',
@@ -93,4 +94,4 @@ const postData = async function ( url='',data = {}) {
     }catch (error){
         console.log('There is an error in the POST update...'+ error);
     };
-}
+};

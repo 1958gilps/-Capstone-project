@@ -48,17 +48,17 @@ let locationData = [];
 
  //GET data from apiDate = [];
  app.get('/date', function(request, response) {
-  request.send(apiDate)
+  response.send(apiDate)
 });
 
  //GET data from weatherData = [];
 app.get('/weather', function(request, response) {
-  request.send(weatherData)
+  response.send(weatherData)
 });
 
  //GET location from locationData = [];
  app.get('/location', function(request, response) {
-  request.send(locationData)
+  response.send(locationData)
 });
 
 //POST date for the api
@@ -75,7 +75,7 @@ app.post('/saveWeather', function (request, response) {
 
 //POST location to locationData = [];
 app.post('/saveLocation', function (request, response) {
-  console.log(request.body)
+  console.log("geonames_apiLocation :", request.body)
     locationData.push(request.body)
   })
 
