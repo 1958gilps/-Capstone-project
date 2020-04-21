@@ -50,7 +50,7 @@ export function apiWeather (e) {
       postData('/saveWeather',(apiData)) // jumps to postData
 
       .then(
-        console.log("end apiWeather")
+        updateUI()
         )
     });
 };
@@ -91,5 +91,26 @@ const postData = async function ( url='',data = {}) {
         return newData;
     }catch (error){
         console.log('There is an error in the POST update...'+ error);
+    };
+};
+
+//update UI
+const updateUI = async () => {
+    const request = await fetch ('/weather') // 
+        try{
+        const serverData = await request.json()
+        console.log("updateUI",serverData);
+
+        //for (var i=0; i<serverData.length; i++) {
+            
+            document.getElementById('datetime').innerHTML = serverData[0].valid_date;
+            document.getElementById('max_temp').innerHTML = serverData[0].max_temp;
+            document.getElementById('low_temp').innerHTML = serverData[0].low_temp;
+            document.getElementById('precip').innerHTML = serverData[0].precip;
+            document.getElementById('wind_gust_spd').innerHTML = serverData[0].wind_spd;
+        //}
+
+    }catch (error){
+        console.log('There is an error in the UI update...'+ error);
     };
 };

@@ -38,7 +38,7 @@ function listening() {
     console.log(`running on localhost: ${port}`);
   };
 
-let apiDate = [];
+let apiPicture = [];
 let weatherData = [];
 let locationData = [];
 
@@ -47,8 +47,8 @@ let locationData = [];
 });
 
  //GET data from apiDate = [];
- app.get('/date', function(request, response) {
-  response.send(apiDate)
+ app.get('/picture', function(request, response) {
+  response.send(apiPicture)
 });
 
  //GET data from weatherData = [];
@@ -62,9 +62,9 @@ app.get('/weather', function(request, response) {
 });
 
 //POST date for the api
-app.post('/saveDate', function (request, response) {
+app.post('/savePicture', function (request, response) {
   console.log(request.body)
-    apiDate.push(request.body)
+  apiPicture.push(request.body)
   })
 
 //POST data to weatherData = [];
