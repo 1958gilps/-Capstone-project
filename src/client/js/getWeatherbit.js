@@ -45,9 +45,17 @@ export function apiWeather (e) {
     console.log("state", inputState);
     getWeather(`${baseURL}${inputCity},${ inputState}${key}`) // jumps to getWeather
 
-    .then(function(apiData) { //DATA as JSON
-        console.log(apiData);
-      postData('/saveWeather',(apiData)) // jumps to postData
+    .then(function(weatherData) { //DATA as JSON
+        console.log("line 49",weatherData);
+        const weatherSave = {
+          city_name:weatherData.city_name,
+          state_code:weatherData.state_code,
+          weather:weatherData.data[0].weather.description,
+          valid_date:weatherData.data[0].valid_date,
+          high_temp:weatherData.data[0].high_temp,
+          wind_spd:weatherData.data[0].wind_spd,
+        }
+      postData('/saveWeather',(weatherSave)) // jumps to postData
 
       .then(
         updateUI()
@@ -63,9 +71,9 @@ const getWeather = async (url) =>{
     const response = await fetch (url);
 
     try {
-        const apiData = response.json();
-        console.log(apiData);
-        return apiData;
+        const weatherData = response.json();
+        console.log("line 67",weatherData);
+        return weatherData;
 
     } catch (error) {
         console.log('There is an error in the GET update...'+ error);
@@ -87,7 +95,7 @@ const postData = async function ( url='',data = {}) {
     try {
         const newData = res.json();
 
-        console.log(newData);
+        console.log("line 90", newData);
         return newData;
     }catch (error){
         console.log('There is an error in the POST update...'+ error);
@@ -103,11 +111,12 @@ const updateUI = async () => {
 
         //for (var i=0; i<serverData.length; i++) {
             
-            document.getElementById('datetime').innerHTML = serverData[0].valid_date;
-            document.getElementById('max_temp').innerHTML = serverData[0].max_temp;
-            document.getElementById('low_temp').innerHTML = serverData[0].low_temp;
-            document.getElementById('precip').innerHTML = serverData[0].precip;
-            document.getElementById('wind_gust_spd').innerHTML = serverData[0].wind_spd;
+            document.getElementById('city_name').innerHTML = serverData[0].city_name;
+            document.getElementById('state_code').innerHTML = serverData[0].state_code;
+            document.getElementById('valid_date').innerHTML = serverData[0].valid_date;
+            document.getElementById('weather').innerHTML = serverData[0].weather;
+            document.getElementById('high_temp').innerHTML = serverData[0].high_temp;
+            document.getElementById('wind_spd').innerHTML = serverData[0].wind_spd;
         //}
 
     }catch (error){

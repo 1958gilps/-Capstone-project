@@ -14,36 +14,42 @@
                     <h1>AMERICA the BEAUTIFUL TRAVEL PLANNER</h1>
                 </section>
             </div>
+
             <div id = "two" class = "box">
                 <div class ="holder entry">
-                    <div class = "title">Current Weather</div>
+                    <div class = "title">Current Weather for</div>
                     <div id = "entryHolder">
-                      <h5>Date: <div id = "datetime"></div></h5>
-                      <h5>Hi Temp:<div id = "max_temp"></div></h5>
-                      <h5>Lo Temp:<div id = "low_temp"></div></h5>
-                      <h5>Rain: <div id = "precip"></div></h5>
-                      <h5>Wind: <div id = "wind_gust_spd"></div></h5>
+                        <div id = "city_name"></div>,<div id ="state_code"></div>
+                        
+                        Date:<div id = "valid_date"></div>
+                        Weather:<div id = "weather"></div> 
+                        Temp: <div id = "high_temp"></div>
+                        Wind: <div id = "wind_spd"></div>
                     </div>
                   </div>
-            </div>
+                </div>
             <div id = "three" class = "box">
 
             </div>
             <div id = "four" class = "box">
                 <section>
                     <div class ="holder city">
-                        <label for="city">Enter City here</label>
+                        <label for="city">Enter Destination</label>
                         <input type="text" id="city" placeholder="Enter city here">
                     </div>
                     <div class ="holder state">
                         <label for="state">Enter the State here</label>
                         <input type="text" id="state" placeholder="Enter state here">
                     </div>
-                    <div class ="date">
-                        <label for="date">Enter Trip Date: </label>
-                        <input type="date" id= "date" >
-                        <button id="submit" type = "submit"> Submit </button>
+                    <div class ="departDate">
+                        <label for="date">Enter Depart Date: </label>
+                        <input type="date" id= "departDate" >
                     </div>
+                    <div class ="returnDate">
+                        <label for="date">Enter Return Date: </label>
+                        <input type="date" id= "returnDate" >
+                    </div>
+                    <button id="submit" type = "submit"> Submit </button>
                 </section>
             </div>
             <div id = "five" class = "box"></div>

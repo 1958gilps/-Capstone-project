@@ -17,14 +17,14 @@ example - https://pixabay.com/api/?key=16105764-8b11a6d77c5013b870691f430&q=yell
 */
 
 const key = '16105764-8b11a6d77c5013b870691f430';
-const baseURL = 'https://pixabay.com/api/?key=';
+const baseURL = 'https://pixabay.com/api/';
 
 export function apiPicture (e) {
     const inputCity = document.getElementById('city').value; // reads the city entered
     const inputState = document.getElementById('state').value; // reads the state entered
     console.log("city",inputCity);
     console.log("state", inputState);
-    getPicture(`${baseURL}${key}&q=${inputCity}&image_type=photo`) // jumps to getPicture
+    getPicture(`${baseURL}?key=${key}&q=${inputCity},${inputState}&image_type=photo&pretty=true`) // jumps to getPicture
 
     .then(function(apiData) { //DATA as JSON
         console.log(apiData);
