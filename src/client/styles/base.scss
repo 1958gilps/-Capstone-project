@@ -1,15 +1,13 @@
 body {
-    background-color: rgb(235, 235, 150);
+    background-color: rgb(236, 243, 212);
     display:grid;
     flex-direction: row;
     min-height: 20vh;
+
 }
 
 main {
     grid: 5;
 }
 
-section {
-    max-width: 500px;
-    margin: 50px auto;
-}
+

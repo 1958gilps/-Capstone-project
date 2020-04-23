@@ -1,5 +1,6 @@
 .box {
-    display: flex;
+    display: grid;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     padding: 15px;
@@ -16,15 +17,19 @@ h1 {
 #two {
   grid-area: ml;
   background-color: rgb(235, 235, 150);
+  border: double;
+  border-color: chocolate;
 }
 #three {
   grid-area: mr;
-  background-color: rgb(235, 235, 150);
+  background-color: rgb(236, 243, 212);
 }
 #four {
   grid-area: bt;
+  max-width: fit-content;
   height: 200px;
   background-color: rgb(235, 235, 150);
+  border: double;
   border-color: chocolate;
 }
 #five {

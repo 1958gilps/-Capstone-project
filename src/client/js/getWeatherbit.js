@@ -72,7 +72,7 @@ const getWeather = async (url) =>{
 
     try {
         const weatherData = response.json();
-        console.log("line 67",weatherData);
+
         return weatherData;
 
     } catch (error) {
