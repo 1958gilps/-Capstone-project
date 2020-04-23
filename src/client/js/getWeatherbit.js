@@ -35,18 +35,22 @@ Data update delay: 1 hour
 Price: Free 
 */
 
+
+const baseURL = 'https://api.weatherbit.io/v2.0/forecast/daily?city=';  //16 day weather
+
 const key = '&key=fc643df8afa84232810d91605c97db23';
-const baseURL = 'https://api.weatherbit.io/v2.0/forecast/daily?city=';
+//const baseURL = 'https://api.weatherbit.io/v2.0/history/daily?city=';
+const historyDate = '&start_date=2019-09-20&end_date=2019-09-21'
 
 export function apiWeather (e) {
     const inputCity = document.getElementById('city').value; // reads the city entered
     const inputState = document.getElementById('state').value; // reads the state entered
     console.log("city",inputCity);
     console.log("state", inputState);
-    getWeather(`${baseURL}${inputCity},${ inputState}${key}`) // jumps to getWeather
+    getWeather(`${baseURL}${inputCity},${inputState}${historyDate}${key}`) // jumps to getWeather
 
     .then(function(weatherData) { //DATA as JSON
-        console.log("line 49",weatherData);
+        console.log("line 53",weatherData);
         const weatherSave = {
           city_name:weatherData.city_name,
           state_code:weatherData.state_code,
