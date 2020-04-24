@@ -1,18 +1,17 @@
 .container {
     display: grid;
-    max-width: 750px;
+  
     grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: 200px 200px 200px 50px;
     grid-template-areas:
     "tp tp tp tp tp tp tp"
+    "sm sm sm sm sm sm sm"
     "ml ml ml mr mr mr mr"
     "bt bt bt bt bt bt bt"
     "bs bs bs bs bs bs bs";
-    margin: auto;
-    grid-gap: 20px;
+
+    grid-gap: 10px;
     border: 10px solid rgb(247, 182, 96);
-    justify-content: center;
-    justify-items: center;
+
 }
 section {
     max-width: 900px;
