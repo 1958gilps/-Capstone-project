@@ -45,7 +45,7 @@ export function apiPicture (e) {
         //    tags:imageData.hits.tags,
         //  }
 
-        postData('/savePicture',(pictureSave)) // jumps to postData
+        postData('/savePicture',(imageData)) // jumps to postData
 
         .then(
             //console.log("end apiPicture")
@@ -99,10 +99,11 @@ const updateUI = async () => {
     const request = await fetch ('/picture') // 
         try{
         const serverData = await request.json()
-        console.log("pixabay line # 102",serverData);
+        console.log("pixabay line # 102",serverData.id[0].tags);
             
-            document.getElementById('image').innerHTML = serverData[0].pageURL;
+            document.getElementById('image').innerHTML = serverData.id[0].tags;
+
     }catch (error){
-        console.log('There is an error in the UI update...'+ error);
+        console.log('There is an error in the getPixabay UI update...'+ error);
     };
 };
