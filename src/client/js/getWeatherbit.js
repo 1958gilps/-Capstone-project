@@ -37,23 +37,19 @@ Price: Free
 
 
 const baseURL = 'https://api.weatherbit.io/v2.0/forecast/daily?city=';  //16 day weather
-
 const key = '&key=fc643df8afa84232810d91605c97db23';
-
 const tempInd = '&units=I'
 //const baseURL = 'https://api.weatherbit.io/v2.0/history/daily?city=';
 //const historyDate = '&start_date=2019-09-20&end_date=2019-09-21'
 
 export function apiWeather (e) {
     const inputCity = document.getElementById('city').value; // reads the city entered
-    const inputState = document.getElementById('state').value; // reads the state entered
     const departDate = document.getElementById('departDate').value; // reads the depart date entered
     const returnDate = document.getElementById('returnDate').value; // reads the depart date entered
     console.log("city",inputCity);
-    console.log("state", inputState);
     console.log("departDate", departDate);
     console.log("returnDate", returnDate);
-    getWeather(`${baseURL}${inputCity},${inputState}${key}${tempInd}`) // jumps to getWeather
+    getWeather(`${baseURL}${inputCity}${key}${tempInd}`) // jumps to getWeather
 
     .then(function(weatherData) { //DATA as JSON
         console.log(weatherData);
