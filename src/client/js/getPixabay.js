@@ -13,40 +13,59 @@ Password: CapStone
 API Key = 16105764-8b11a6d77c5013b870691f430
 
 example - https://pixabay.com/api/?key=16105764-8b11a6d77c5013b870691f430&q=yellow+flowers&image_type=photo
-
 */
+// "https://pixabay.com/api/?key=16105764-8b11a6d77c5013b870691f430&q=Baltimore, MD&image_type=photo&pretty=true"
 
 const key = '16105764-8b11a6d77c5013b870691f430';
 const baseURL = 'https://pixabay.com/api/';
 
+const example = 'baltimore,md&image_type=photo'
+
+// no good - https://pixabay.com/api/?key=16105764-8b11a6d77c5013b870691f430&q=Baltimore,MD&image_type=photo
+// no good - https://pixabay.com/api/?key=16105764-8b11a6d77c5013b870691f430&q=baltimore,md&image_type=photo
+// is good - https://pixabay.com/api/?key=16105764-8b11a6d77c5013b870691f430&q=Boston,MA&image_type=photo
+// no good - https://pixabay.com/api/?key=16105764-8b11a6d77c5013b870691f430&q=Chicago,IL&image_type=photo
+// is good - https://pixabay.com/api/?key=16105764-8b11a6d77c5013b870691f430&q=Dallas,TX&image_type=photo
+// is good - https://pixabay.com/api/?key=16105764-8b11a6d77c5013b870691f430&q=Miami,FL&image_type=photo
+// is good - https://pixabay.com/api/?key=16105764-8b11a6d77c5013b870691f430&q=Nashville,TN&image_type=photo
+// no good - https://pixabay.com/api/?key=16105764-8b11a6d77c5013b870691f430&q=Pittsburg,PA&image_type=photo
+
 export function apiPicture (e) {
     const inputCity = document.getElementById('city').value; // reads the city entered
-    const inputState = document.getElementById('state').value; // reads the state entered
-    console.log("city",inputCity);
-    console.log("state", inputState);
-    getPicture(`${baseURL}?key=${key}&q=${inputCity},${inputState}&image_type=photo&pretty=true`) // jumps to getPicture
+    //console.log("city",inputCity);
+    getPicture(`${baseURL}?key=${key}&q=${inputCity}&image_type=photo`) // jumps to getPicture
 
-    .then(function(apiData) { //DATA as JSON
-        console.log(apiData);
-      postData('/savePicture',(apiData)) // jumps to postData
+    //getPicture(`${baseURL}?key=${key}&q=${example}`) // jumps to getPicture
 
-      .then(
-        console.log("end apiPicture")
-        )
-    });
-};
+    .then(function(imageData) { //DATA as JSON
+        console.log("pixabay line # 41", imageData);
+
+        //const pictureSave = {
+        //    pageURL:imageData.hits.pageURL,
+        //    tags:imageData.hits.tags,
+        //  }
+
+        postData('/savePicture',(pictureSave)) // jumps to postData
+
+        .then(
+            //console.log("end apiPicture")
+            updateUI()
+            )
+        });
+    };
+
 
 //GET async
 const getPicture= async (url) =>{
 
-    console.log(url);
+    //console.log(url);
  
     const response = await fetch (url);
 
     try {
-        const apiData = response.json();
-        console.log(apiData);
-        return apiData;
+        const imageData = response.json();
+        //console.log(imageData );
+        return imageData ;
 
     } catch (error) {
         console.log('There is an error in the GET update...'+ error);
@@ -68,9 +87,22 @@ const postData = async function ( url='',data = {}) {
     try {
         const newData = res.json();
 
-        console.log(newData);
+        //console.log(newData);
         return newData;
     }catch (error){
         console.log('There is an error in the POST update...'+ error);
+    };
+};
+
+//update UI
+const updateUI = async () => {
+    const request = await fetch ('/picture') // 
+        try{
+        const serverData = await request.json()
+        console.log("pixabay line # 102",serverData);
+            
+            document.getElementById('image').innerHTML = serverData[0].pageURL;
+    }catch (error){
+        console.log('There is an error in the UI update...'+ error);
     };
 };

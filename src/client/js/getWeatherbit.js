@@ -34,8 +34,6 @@ Non-Commercial use only
 Data update delay: 1 hour
 Price: Free 
 */
-
-
 const baseURL = 'https://api.weatherbit.io/v2.0/forecast/daily?city=';  //16 day weather
 const key = '&key=fc643df8afa84232810d91605c97db23';
 const tempInd = '&units=I'
@@ -46,26 +44,24 @@ export function apiWeather (e) {
     const inputCity = document.getElementById('city').value; // reads the city entered
     const departDate = document.getElementById('departDate').value; // reads the depart date entered
     const returnDate = document.getElementById('returnDate').value; // reads the depart date entered
-    console.log("city",inputCity);
-    console.log("departDate", departDate);
-    console.log("returnDate", returnDate);
+    //console.log("city",inputCity);
+    //console.log("departDate", departDate);
+    //console.log("returnDate", returnDate);
     getWeather(`${baseURL}${inputCity}${key}${tempInd}`) // jumps to getWeather
 
     .then(function(weatherData) { //DATA as JSON
-        console.log(weatherData);
+        console.log("Weatherbit line # 53", weatherData);
         let startDayData;
 
         for (let dayData of weatherData.data) {
-            console.log(dayData.valid_date);
-            console.log(departDate);
+            //console.log(dayData.valid_date);
+            //console.log(departDate);
             if (departDate==dayData.valid_date){
                 startDayData=dayData
                 break;
             }
-
-            //...
         };
-        console.log(startDayData);
+        //console.log(startDayData);
 
         const weatherSave = {
           city_name:weatherData.city_name,
@@ -86,13 +82,12 @@ export function apiWeather (e) {
 //GET async
 const getWeather = async (url) =>{
 
-    console.log(url);
+    //console.log(url);
  
     const response = await fetch (url);
 
     try {
         const weatherData = response.json();
-
         return weatherData;
 
     } catch (error) {
@@ -115,7 +110,7 @@ const postData = async function ( url='',data = {}) {
     try {
         const newData = res.json();
 
-        console.log("line 90", newData);
+        //console.log("line 90", newData);
         return newData;
     }catch (error){
         console.log('There is an error in the POST update...'+ error);
@@ -127,10 +122,7 @@ const updateUI = async () => {
     const request = await fetch ('/weather') // 
         try{
         const serverData = await request.json()
-        console.log("updateUI",serverData);
-
-        //for (var i=0; i<serverData.length; i++) {
-            
+        //console.log("updateUI",serverData);        
             document.getElementById('city_name').innerHTML = serverData[0].city_name;
             document.getElementById('state_code').innerHTML = serverData[0].state_code;
             document.getElementById('valid_date').innerHTML = serverData[0].valid_date;
@@ -139,8 +131,6 @@ const updateUI = async () => {
             document.getElementById('wind_spd').innerHTML = serverData[0].wind_spd;
             document.getElementById('depart_date').innerHTML = departDate.value;
             document.getElementById('return_date').innerHTML = returnDate.value;
-        //}
-
     }catch (error){
         console.log('There is an error in the UI update...'+ error);
     };
