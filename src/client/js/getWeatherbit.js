@@ -40,24 +40,40 @@ const baseURL = 'https://api.weatherbit.io/v2.0/forecast/daily?city=';  //16 day
 
 const key = '&key=fc643df8afa84232810d91605c97db23';
 //const baseURL = 'https://api.weatherbit.io/v2.0/history/daily?city=';
-const historyDate = '&start_date=2019-09-20&end_date=2019-09-21'
+//const historyDate = '&start_date=2019-09-20&end_date=2019-09-21'
 
 export function apiWeather (e) {
     const inputCity = document.getElementById('city').value; // reads the city entered
     const inputState = document.getElementById('state').value; // reads the state entered
+    const departDate = document.getElementById('departDate').value; // reads the state entered
     console.log("city",inputCity);
     console.log("state", inputState);
-    getWeather(`${baseURL}${inputCity},${inputState}${historyDate}${key}`) // jumps to getWeather
+    console.log("departDate", departDate);
+    getWeather(`${baseURL}${inputCity},${inputState}${key}`) // jumps to getWeather
 
     .then(function(weatherData) { //DATA as JSON
-        console.log("line 53",weatherData);
+        console.log(weatherData);
+        let startDayData;
+
+        for (let dayData of weatherData.data) {
+            console.log(dayData.valid_date);
+            console.log(departDate);
+            if (departDate==dayData.valid_date){
+                startDayData=dayData
+                break;
+            }
+
+            //...
+        };
+        console.log(startDayData);
+
         const weatherSave = {
           city_name:weatherData.city_name,
           state_code:weatherData.state_code,
-          weather:weatherData.data[0].weather.description,
-          valid_date:weatherData.data[0].valid_date,
-          high_temp:weatherData.data[0].high_temp,
-          wind_spd:weatherData.data[0].wind_spd,
+          weather:startDayData.weather.description,
+          valid_date:startDayData.valid_date,
+          high_temp:startDayData.high_temp,
+          wind_spd:startDayData.wind_spd,
         }
       postData('/saveWeather',(weatherSave)) // jumps to postData
 
