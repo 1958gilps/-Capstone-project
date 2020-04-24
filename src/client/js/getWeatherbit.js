@@ -47,10 +47,12 @@ const tempInd = '&units=I'
 export function apiWeather (e) {
     const inputCity = document.getElementById('city').value; // reads the city entered
     const inputState = document.getElementById('state').value; // reads the state entered
-    const departDate = document.getElementById('departDate').value; // reads the state entered
+    const departDate = document.getElementById('departDate').value; // reads the depart date entered
+    const returnDate = document.getElementById('returnDate').value; // reads the depart date entered
     console.log("city",inputCity);
     console.log("state", inputState);
     console.log("departDate", departDate);
+    console.log("returnDate", returnDate);
     getWeather(`${baseURL}${inputCity},${inputState}${key}${tempInd}`) // jumps to getWeather
 
     .then(function(weatherData) { //DATA as JSON
@@ -136,10 +138,11 @@ const updateUI = async () => {
             document.getElementById('city_name').innerHTML = serverData[0].city_name;
             document.getElementById('state_code').innerHTML = serverData[0].state_code;
             document.getElementById('valid_date').innerHTML = serverData[0].valid_date;
-
             document.getElementById('weather').innerHTML = serverData[0].weather;
             document.getElementById('high_temp').innerHTML = serverData[0].high_temp;
             document.getElementById('wind_spd').innerHTML = serverData[0].wind_spd;
+            document.getElementById('depart_date').innerHTML = departDate.value;
+            document.getElementById('return_date').innerHTML = returnDate.value;
         //}
 
     }catch (error){

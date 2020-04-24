@@ -1,6 +1,6 @@
 .container {
     display: grid;
-  
+    
     grid-template-columns: repeat(7, 1fr);
     grid-template-areas:
     "tp tp tp tp tp tp tp"
