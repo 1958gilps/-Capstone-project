@@ -48,7 +48,7 @@ h1 {
 
 #three {
   grid-area: ml;
-  height: 325px;
+  height: 350px;
   font-size: large;
   font-family: sans-serif;
   justify-content: left;
@@ -61,7 +61,7 @@ h1 {
 }
 #four {
   grid-area: mr;
-  height: 325px;
+  height: 350px;
   background-color: rgb(172, 236, 230);
 
   border: double;
@@ -71,6 +71,7 @@ h1 {
   article img {
     display: block;
     max-width: 100%;
+
     border: 1px solid #888;
     box-shadow: 0 0.5em 0.3em #888;
     margin-bottom: 1.25em;
@@ -78,7 +79,7 @@ h1 {
 }
 #five {
   grid-area: bt;
-  height: 250px;
+  height: 200px;
   background-color: rgb(235, 235, 150);
   border: double;
   border-color: chocolate;

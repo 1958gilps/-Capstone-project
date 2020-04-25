@@ -40,18 +40,23 @@ export function apiPicture (e) {
     .then(function(imageData) { //DATA as JSON
         console.log("pixabay line # 41", imageData);
 
+        document.getElementById('image').src = imageData.hits[0].webformatURL;
+
+
+
+
         //const pictureSave = {
         //    pageURL:imageData.hits.pageURL,
         //    tags:imageData.hits.tags,
         //  }
 
-        postData('/savePicture',(imageData)) // jumps to postData
+        //postData('/savePicture',(imageData)) // jumps to postData
 
-        .then(
+        //.then(
             //console.log("end apiPicture")
-            updateUI()
-            )
-        });
+           // updateUI()
+           // )
+        })
     };
 
 
@@ -72,7 +77,7 @@ const getPicture= async (url) =>{
     };
 };
 
-
+/*
 ///POST async
 const postData = async function ( url='',data = {}) { 
     const res = await fetch (url, {  
@@ -99,11 +104,12 @@ const updateUI = async () => {
     const request = await fetch ('/picture') // 
         try{
         const serverData = await request.json()
-        console.log("pixabay line # 102",serverData.id[0].tags);
+        console.log("pixabay line # 102",serverData);
             
-            document.getElementById('image').innerHTML = serverData.id[0].tags;
+            document.getElementById('image').innerHTML = serverData.tags;
 
     }catch (error){
         console.log('There is an error in the getPixabay UI update...'+ error);
     };
 };
+*/
