@@ -36,7 +36,7 @@ h1 {
 }
 #two {
   grid-area: sm;
-  height: 100px;
+  height: 150px;
   font-size: large;
   font-family: sans-serif;
   background-color: rgb(235, 235, 150);
@@ -71,7 +71,6 @@ h1 {
   article img {
     display: block;
     max-width: 100%;
-   
     border: 1px solid #888;
     box-shadow: 0 0.5em 0.3em #888;
     margin-bottom: 1.25em;

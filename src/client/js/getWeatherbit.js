@@ -36,89 +36,38 @@ export function apiWeather (e) {
     const inputCity = document.getElementById('city').value; // reads the city,state entered
     const departDate = document.getElementById('departDate').value; // reads the depart date entered
     const returnDate = document.getElementById('returnDate').value; // reads the return date entered
-    //console.log("city",inputCity);
-    console.log("departDate", departDate);
-    console.log("returnDate", returnDate);
+    console.log("city",inputCity);
+    //console.log("departDate", departDate);
+    //console.log("returnDate", returnDate);
 
-    var now = new Date();
-    console.log("line 44", now); // line 44 Sun Apr 26 2020 08:48:33 GMT-0400 (Eastern Daylight Time)
-
-    var start = new Date(now.getFullYear(), 0, 0);
-    console.log("line 47", start); // line 47 Tue Dec 31 2019 00:00:00 GMT-0500 (Eastern Standard Time)
-
-    var test = new Date(now.getFullYear(), 0, 0);
-    console.log("line 50", test); // line 47 Tue Dec 31 2019 00:00:00 GMT-0500 (Eastern Standard Time)
-
-    var diff = now - start;
-    console.log("line 50", diff); // line 50 10136913300 - how many milliseconds to today
-
-    var oneDay = 1000 * 60 * 60 * 24;
-    console.log("line 53", oneDay); // line 53 86400000 - how many milliseconds in a day
-
-    var year = oneDay * 365;
-    console.log("line 56", year);
-
-    var day = Math.floor(diff / oneDay);
-    console.log('Day of year: ' + day); // Day of year: 117 (today)
-
-    var d = new Date(departDate.split("-").join("/"))
-    console.log("line 62", d); // line 59 Sat May 23 2020 20:00:00 GMT-0400 (Eastern Daylight Time)
-
-    var depart_diff = d - start;
-    console.log("line 65", depart_diff); // line 62 12510000000 - milliseconds of the year for departing
-
-    var depart_day = Math.floor(depart_diff / oneDay);
-    console.log('Depart Date: ' + depart_day); // Depart Date: 144
-
-    var r = new Date(returnDate.split("-").join("/"))
-    console.log("line 71", r); // line 65 Sun May 24 2020 20:00:00 GMT-0400 (Eastern Daylight Time)
-
-    var return_diff = r - start;
-    console.log("line 74", return_diff); // line 68 12596400000 - milliseconds of the year for returning
-
-    var return_day = Math.floor(return_diff / oneDay);
-    console.log('Depart Date: ' + return_day); //Depart Date: 145
-
-    var departDate_past = new Date(d);
+    var now = new Date(); // Today - ex Sun Apr 26 2020 08:48:33 GMT-0400 (Eastern Daylight Time)
+    var start = new Date(now.getFullYear(), 0, 0); // Last day of last year - ex Tue Dec 31 2019 00:00:00 GMT-0500 (Eastern Standard Time)
+    var diff = now - start; // how many milliseconds this year to today
+    var oneDay = 1000 * 60 * 60 * 24; // how many milliseconds in a day
+    //var year = oneDay * 365; // how many milliseconds in a year
+    var day = Math.floor(diff / oneDay); // Day of year: 117 (today)
+    var d = new Date(departDate.split("-").join("/")) // change yyyy-mm-dd to yyyy/mm/dd
+    var depart_diff = d - start; // milliseconds of the year for departing
+    var depart_day = Math.floor(depart_diff / oneDay); // Depart Date: 144
+    var r = new Date(returnDate.split("-").join("/")) // change yyyy-mm-dd to yyyy/mm/dd
+    var return_diff = r - start; // milliseconds of the year for returning
+    var return_day = Math.floor(return_diff / oneDay); // Depart Date: 145
+    var departDate_past = new Date(d); 
     departDate_past.setFullYear(departDate_past.getFullYear() - 1)
-    console.log("line 84", departDate_past) // line 84 Fri May 24 2019 00:00:00 GMT-0400 (Eastern Daylight Time)
+    var past_forecast = departDate_past.toISOString().substring(0,10);
+    var date = new Date(past_forecast);
+    var newdate = new Date(date);
+    newdate.setDate(newdate.getDate() +2);
+    var dd = newdate.getDate();
+    var mm = newdate.getMonth() + 1;
+    var yyyy = newdate.getFullYear();
+    var past_forecast_plus1 = yyyy + '-' + mm + '-' + dd ;
 
-    var go = departDate_past.toISOString();
+    const duration = return_day - depart_day;
 
-    console.log("line 84", go);    
+    console.log("duration",duration);
 
-    console.log("line 84", go+1);  
-
-
-
-   // var departDate_past = new Date(departDate.split("-").join("/"))
-   // console.log("line 62", d); // line 59 Sat May 23 2020 20:00:00 GMT-0400 (Eastern Daylight Time)
-
-
-    const z = (15);
-
-
-    //var go = departDate.getFullYear(), 0, 0);
-
-
-    // convert to usable year, month , day values
-/*
-    const departSplit = departDate.split("-"); // convert string to an array: [yyyy, mm, dd]
-    const departYear = Number(departSplit[0]);
-    const departMonth = Number(departSplit[1]);
-    const departDay = Number(departSplit[2]);
-
-    const now = new Date();
-    const nowYear = now.getFullYear();
-    const nowMonth = now.getMonth()+1; //getMonth returns 0-11
-    const nowDay = now.getDate();
-*/
-
-    // if depart date < 15 days
-
-    //else 
-
-    // depart date is > 15 days with format start date = x and end date = x + 1
+    const z = (13);
 
     if(depart_day < day+z) {
         getWeather_current(`${baseURL}${inputCity}${key}${tempInd}`) // jumps to getWeather_current
@@ -151,7 +100,7 @@ export function apiWeather (e) {
             });  
     }
     else {
-            getWeather_past(`${baseURL_past}${inputCity}&start_date=${go}&end_date=${go_go}${key}${tempInd}`) // jumps to getWeather_past
+            getWeather_future(`${baseURL_past}${inputCity}&start_date=${past_forecast}&end_date=${past_forecast_plus1}${key}${tempInd}`) // jumps to getWeather_past
             
             .then(function(weatherData) { //DATA as JSON
                 console.log("Weatherbit line # 53", weatherData);
@@ -169,7 +118,7 @@ export function apiWeather (e) {
           postData('/saveWeather',(weatherSave)) // jumps to postData
     
           .then(
-            updateUI_datePast()
+            updateUI_dateFuture()
             )
         });
     }
@@ -192,7 +141,7 @@ const getWeather_current = async (url) =>{
 };
 
 //GET async
-const getWeather_past = async (url) =>{
+const getWeather_future = async (url) =>{
 
     //console.log(url);
  
@@ -235,21 +184,23 @@ const updateUI_dateCurrent = async () => {
     const request = await fetch ('/weather') // 
         try{
         const serverData = await request.json()
-        //console.log("updateUI",serverData);        
+        //console.log("updateUI",serverData);
+   
             document.getElementById('city_name').innerHTML = serverData[0].city_name;
             document.getElementById('state_code').innerHTML = serverData[0].state_code;
             document.getElementById('valid_date').innerHTML = serverData[0].valid_date;
             document.getElementById('weather').innerHTML = serverData[0].weather;
             document.getElementById('high_temp').innerHTML = serverData[0].high_temp;
             document.getElementById('wind_spd').innerHTML = serverData[0].wind_spd;
-            document.getElementById('depart_date').innerHTML = departDate.value; //.toDateString();
-            document.getElementById('return_date').innerHTML = returnDate.value; //.toDateString();
+
+            document.getElementById('depart_date').innerHTML = departDate.value;
+            document.getElementById('return_date').innerHTML = returnDate.value;
     }catch (error){
         console.log('There is an error in the UI update...'+ error);
     };
 };
 //update UI with Historical Data
-const updateUI_datePast = async () => {
+const updateUI_dateFuture = async () => {
     const request = await fetch ('/weather') // 
         try{
         const serverData = await request.json()
@@ -261,6 +212,7 @@ const updateUI_datePast = async () => {
             document.getElementById('lo_temp').innerHTML = serverData[0].min_temp;
             document.getElementById('max_wind_spd').innerHTML = serverData[0].max_wind_spd;
             document.getElementById('snow_fall').innerHTML = serverData[0].snow;
+
             document.getElementById('depart_date').innerHTML = departDate.value; //.toDateString();
             document.getElementById('return_date').innerHTML = returnDate.value; //.toDateString();
     }catch (error){
