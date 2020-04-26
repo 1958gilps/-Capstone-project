@@ -63,7 +63,7 @@ export function apiWeather (e) {
     var yyyy = newdate.getFullYear();
     var past_forecast_plus1 = yyyy + '-' + mm + '-' + dd ;
 
-    const duration = return_day - depart_day;
+    let duration = return_day - depart_day;
 
     console.log("duration",duration);
 
@@ -192,7 +192,6 @@ const updateUI_dateCurrent = async () => {
             document.getElementById('weather').innerHTML = serverData[0].weather;
             document.getElementById('high_temp').innerHTML = serverData[0].high_temp;
             document.getElementById('wind_spd').innerHTML = serverData[0].wind_spd;
-
             document.getElementById('depart_date').innerHTML = departDate.value;
             document.getElementById('return_date').innerHTML = returnDate.value;
     }catch (error){
@@ -212,9 +211,8 @@ const updateUI_dateFuture = async () => {
             document.getElementById('lo_temp').innerHTML = serverData[0].min_temp;
             document.getElementById('max_wind_spd').innerHTML = serverData[0].max_wind_spd;
             document.getElementById('snow_fall').innerHTML = serverData[0].snow;
-
-            document.getElementById('depart_date').innerHTML = departDate.value; //.toDateString();
-            document.getElementById('return_date').innerHTML = returnDate.value; //.toDateString();
+            document.getElementById('depart_date').innerHTML = departDate.value;
+            document.getElementById('return_date').innerHTML = returnDate.value;
     }catch (error){
         console.log('There is an error in the UI update...'+ error);
     };
