@@ -28,20 +28,81 @@ Data update delay: 1 hour
 Price: Free 
 */
 const baseURL = 'https://api.weatherbit.io/v2.0/forecast/daily?city=';  //16 day weather
-const baseURL_past = 'https://api.weatherbit.io/v2.0/history/daily?city='; // Historical weather
+const baseURL_past = 'https://api.weatherbit.io/v2.0/history/daily?city='; // historical weather
 const key = '&key=fc643df8afa84232810d91605c97db23';
 const tempInd = '&units=I'
 
 export function apiWeather (e) {
     const inputCity = document.getElementById('city').value; // reads the city,state entered
     const departDate = document.getElementById('departDate').value; // reads the depart date entered
-    const returnDate = document.getElementById('returnDate').value; // reads the depart date entered
-    console.log("city",inputCity);
+    const returnDate = document.getElementById('returnDate').value; // reads the return date entered
+    //console.log("city",inputCity);
     console.log("departDate", departDate);
     console.log("returnDate", returnDate);
 
-    // convert to usableyear, month , day values
+    var now = new Date();
+    console.log("line 44", now); // line 44 Sun Apr 26 2020 08:48:33 GMT-0400 (Eastern Daylight Time)
 
+    var start = new Date(now.getFullYear(), 0, 0);
+    console.log("line 47", start); // line 47 Tue Dec 31 2019 00:00:00 GMT-0500 (Eastern Standard Time)
+
+    var test = new Date(now.getFullYear(), 0, 0);
+    console.log("line 50", test); // line 47 Tue Dec 31 2019 00:00:00 GMT-0500 (Eastern Standard Time)
+
+    var diff = now - start;
+    console.log("line 50", diff); // line 50 10136913300 - how many milliseconds to today
+
+    var oneDay = 1000 * 60 * 60 * 24;
+    console.log("line 53", oneDay); // line 53 86400000 - how many milliseconds in a day
+
+    var year = oneDay * 365;
+    console.log("line 56", year);
+
+    var day = Math.floor(diff / oneDay);
+    console.log('Day of year: ' + day); // Day of year: 117 (today)
+
+    var d = new Date(departDate.split("-").join("/"))
+    console.log("line 62", d); // line 59 Sat May 23 2020 20:00:00 GMT-0400 (Eastern Daylight Time)
+
+    var depart_diff = d - start;
+    console.log("line 65", depart_diff); // line 62 12510000000 - milliseconds of the year for departing
+
+    var depart_day = Math.floor(depart_diff / oneDay);
+    console.log('Depart Date: ' + depart_day); // Depart Date: 144
+
+    var r = new Date(returnDate.split("-").join("/"))
+    console.log("line 71", r); // line 65 Sun May 24 2020 20:00:00 GMT-0400 (Eastern Daylight Time)
+
+    var return_diff = r - start;
+    console.log("line 74", return_diff); // line 68 12596400000 - milliseconds of the year for returning
+
+    var return_day = Math.floor(return_diff / oneDay);
+    console.log('Depart Date: ' + return_day); //Depart Date: 145
+
+    var departDate_past = new Date(d);
+    departDate_past.setFullYear(departDate_past.getFullYear() - 1)
+    console.log("line 84", departDate_past) // line 84 Fri May 24 2019 00:00:00 GMT-0400 (Eastern Daylight Time)
+
+    var go = departDate_past.toISOString();
+
+    console.log("line 84", go);    
+
+    console.log("line 84", go+1);  
+
+
+
+   // var departDate_past = new Date(departDate.split("-").join("/"))
+   // console.log("line 62", d); // line 59 Sat May 23 2020 20:00:00 GMT-0400 (Eastern Daylight Time)
+
+
+    const z = (15);
+
+
+    //var go = departDate.getFullYear(), 0, 0);
+
+
+    // convert to usable year, month , day values
+/*
     const departSplit = departDate.split("-"); // convert string to an array: [yyyy, mm, dd]
     const departYear = Number(departSplit[0]);
     const departMonth = Number(departSplit[1]);
@@ -51,7 +112,7 @@ export function apiWeather (e) {
     const nowYear = now.getFullYear();
     const nowMonth = now.getMonth()+1; //getMonth returns 0-11
     const nowDay = now.getDate();
-
+*/
 
     // if depart date < 15 days
 
@@ -59,11 +120,11 @@ export function apiWeather (e) {
 
     // depart date is > 15 days with format start date = x and end date = x + 1
 
-    if(departDate===returnDate) {
+    if(depart_day < day+z) {
         getWeather_current(`${baseURL}${inputCity}${key}${tempInd}`) // jumps to getWeather_current
 
         .then(function(weatherData) { //DATA as JSON
-            console.log("Weatherbit line # 53", weatherData);
+
             let startDayData;
     
             for (let dayData of weatherData.data) {
@@ -90,7 +151,7 @@ export function apiWeather (e) {
             });  
     }
     else {
-            getWeather_past(`${baseURL_past}${inputCity}&start_date=${departDate}&end_date=${returnDate}${key}${tempInd}`) // jumps to getWeather_past
+            getWeather_past(`${baseURL_past}${inputCity}&start_date=${go}&end_date=${go_go}${key}${tempInd}`) // jumps to getWeather_past
             
             .then(function(weatherData) { //DATA as JSON
                 console.log("Weatherbit line # 53", weatherData);
@@ -206,3 +267,15 @@ const updateUI_datePast = async () => {
         console.log('There is an error in the UI update...'+ error);
     };
 };
+
+/*
+<script>
+var d = new Date();
+document.getElementById("demo").innerHTML = d.toDateString();
+</script>
+
+</body>
+</html>
+
+
+*/

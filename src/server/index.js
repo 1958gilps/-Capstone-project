@@ -42,10 +42,6 @@ let apiPicture = [];
 let weatherData = [];
 let locationData = [];
 
- app.get('/', function (request, response) { /// remove
-  response.sendFile('dist/index.html') 
-});
-
  //GET data from apiDate = [];
  app.get('/picture', function(request, response) {
   response.send(apiPicture)

@@ -35,15 +35,11 @@ const example = 'http://api.geonames.org/addressJSON?lat=52.358&lng=4.881&userna
 
 export function apiLocation (e) {
     const inputCity = document.getElementById('city').value; // reads the city entered
-    const inputState = document.getElementById('state').value; // reads the state entered
-    //const inputDate = document.getElementById('date').value // reads the date entered
-    console.log("city",inputCity);
-    console.log("state",inputState);
-    //console.log("date", inputDate);
+
     getLocation(`${example}`) //
 
     .then(function(apiData) { //DATA as JSON
-        console.log(apiData);
+
         postData('/saveLocation',(apiData)) // jumps to postData
         
     .then(
@@ -64,7 +60,8 @@ const getLocation = async (url) =>{
         console.log(apiData);
         return apiData;
 
-    } catch (error) {
+    } 
+    catch (error) {
         console.log('There is an error in the location GET update...'+ error);
     };
 };
@@ -83,7 +80,6 @@ const postData = async function ( url='',data = {}) {
     try {
         const newData = res.json();
 
-        console.log(newData);
         return newData;
     }catch (error){
         console.log('There is an error in the POST update...'+ error);
