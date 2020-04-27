@@ -6,8 +6,55 @@
             max-width: 200px;
             margin: 50px auto;
         }
-        #one {
-            font-size: small;
-        }
+    #one {
+        grid-area: tp;
+        height: 75px;
+      font-size: medium;
+    }
+    #two {
+      grid-area: sm;
+      height: 150px;
+      font-size: small;
+      font-family: sans-serif;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    
+    #three {
+      grid-area: ml;
+      height: 350px;
+      font-size: small;
+      font-family: sans-serif;
+      justify-content: left;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    #four {
+      grid-area: mr;
+      height: 350px;
+      background-color: rgb(172, 236, 230);
+      margin-top: 10px;
+      margin-bottom: 10px;
+      article img {
+        display: block;
+        max-width: 100%;
+        max-height: 325px;
+        border: 1px solid #888;
+        box-shadow: 0 0.5em 0.3em #888;
+        margin-bottom: 1.25em;
+      }
+    }
+    #five {
+      grid-area: bt;
+      height: 200px;
+      font-size: small;
+      font-family: sans-serif;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    
+    #six {
+      grid-area: bs;
+    }
     }
 }
