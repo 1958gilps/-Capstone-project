@@ -17,3 +17,12 @@ section {
     max-width: 900px;
     margin: 50px auto;
 }
+@media (hover: hover) {
+    select:hover {
+        background: lightgreen;
+    }
+    button:hover {
+        background: seagreen;
+    }
+
+}

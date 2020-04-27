@@ -1,0 +1,13 @@
+/* small screen */
+@media (min-width: 30em){
+    .container {
+        max-width: 50em;
+        section {
+            max-width: 200px;
+            margin: 50px auto;
+        }
+        #one {
+            font-size: small;
+        }
+    }
+}
